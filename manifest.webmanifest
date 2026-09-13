@@ -1,0 +1,9 @@
+{
+  "name": "Marathi Love Status",
+  "short_name": "Love Status",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff0000",
+  "icons": []
+}
