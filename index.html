@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolBox India – Free Online Calculators, QR & Utility Tools</title>
+<meta name="description" content="ToolBox India offers fast, free and mobile-friendly calculators, QR generators, image utilities and everyday online tools.">
+<meta name="keywords" content="online tools, calculator, EMI calculator, GST calculator, age calculator, SIP calculator, QR code generator, image compressor, ToolBox India">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#2563eb">
+<meta property="og:title" content="ToolBox India – Free Online Tools">
+<meta property="og:description" content="Fast, free and mobile-friendly calculators, QR tools and everyday utilities.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🧰</text></svg>">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:#f5f7fb;color:#172033;line-height:1.5}
+body.dark{background:#0f172a;color:#e5e7eb}
+header{background:linear-gradient(135deg,#1d4ed8,#7c3aed);color:#fff;padding:38px 15px 32px;text-align:center}
+header h1{margin:0;font-size:42px;letter-spacing:-.5px}
+header p{margin:8px 0 20px;font-size:18px}
+.container{max-width:1200px;margin:auto;padding:0 15px}
+.search{max-width:760px;margin:auto}
+.search input{width:100%;padding:16px 18px;border:0;border-radius:14px;font-size:16px;outline:none;box-shadow:0 12px 35px rgba(0,0,0,.18)}
+.search input:focus{box-shadow:0 0 0 4px rgba(255,255,255,.25),0 12px 35px rgba(0,0,0,.18)}
+.search-count{max-width:760px;margin:8px auto 0;text-align:left;font-size:13px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 8px}
+.stats{display:flex;gap:9px;flex-wrap:wrap}
+.stat{background:#fff;border:1px solid #e5eaf2;padding:9px 13px;border-radius:12px;font-weight:700;font-size:14px}
+.dark .stat,.dark .tool,.dark .section,.dark .favorite-panel{background:#172033;color:#e5e7eb;border-color:#26334a}
+.dark .tool p,.dark .small,.dark .section p{color:#aab4c5}
+.dark input,.dark select,.dark textarea{background:#0f172a;color:#e5e7eb;border-color:#334155}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+.control{border:1px solid #d9e1ed;background:#fff;padding:9px 13px;border-radius:10px;cursor:pointer;font-weight:700}
+.dark .control{background:#172033;color:#fff;border-color:#334155}
+.categories{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:20;background:#f5f7fb;padding:12px 0;border-bottom:1px solid #e5eaf2}
+.dark .categories{background:#0f172a;border-color:#26334a}
+.categories button{background:#fff;color:#2563eb;border:1px solid #dbe3f0;padding:9px 14px;border-radius:22px;cursor:pointer;font-weight:700}
+.categories button.active,.categories button:hover{background:#2563eb;color:#fff}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin:24px 0 12px}
+.section-title h2{margin:0;font-size:25px}
+.section-title span{font-size:13px;color:#667085}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.tool{background:#fff;padding:20px;border-radius:16px;box-shadow:0 4px 18px rgba(15,23,42,.06);border:1px solid #e8edf5;transition:.18s;position:relative}
+.tool:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(15,23,42,.10)}
+.tool h2{margin:0 32px 7px 0;font-size:20px}
+.tool p{color:#667085;margin:0 0 12px}
+.fav{position:absolute;right:15px;top:15px;border:0;background:transparent;font-size:21px;cursor:pointer}
+input,select,textarea{width:100%;padding:11px;margin:5px 0;border:1px solid #ccd5e1;border-radius:9px;font-size:15px}
+textarea{min-height:105px;resize:vertical}
+button.action{background:#2563eb;color:#fff;border:0;padding:11px 16px;border-radius:9px;cursor:pointer;margin-top:7px;font-weight:700}
+button.action:hover{background:#1d4ed8}
+button.secondary{background:#eef4ff;color:#1d4ed8;border:1px solid #cfe0ff;padding:10px 14px;border-radius:9px;cursor:pointer;font-weight:700}
+.result{margin-top:12px;padding:12px;background:#eef4ff;border-radius:10px;min-height:20px;font-weight:600;overflow-wrap:anywhere}
+.dark .result{background:#10213d;color:#e5e7eb}
+.result:empty{display:none}
+.result img{max-width:240px;margin:5px auto;display:block}
+.small{font-size:13px;color:#667085;font-weight:400}
+.hidden{display:none!important}
+.empty-state{text-align:center;background:#fff;border:1px dashed #cbd5e1;border-radius:16px;padding:35px;margin-top:18px;color:#667085}
+.section{background:#fff;border:1px solid #e8edf5;border-radius:16px;padding:22px;margin:28px 0}
+.section h2{margin-top:0}
+.favorite-panel{display:none;background:#fff;border:1px solid #e8edf5;border-radius:14px;padding:15px;margin:12px 0}
+.favorite-panel.show{display:block}
+.favorite-list{display:flex;gap:8px;flex-wrap:wrap}
+.favorite-list button{border:1px solid #dbe3f0;background:#fff;padding:8px 11px;border-radius:9px;cursor:pointer}
+footer{margin-top:35px;padding:30px 15px;text-align:center;background:#111827;color:#fff}
+footer a{color:#fff;text-decoration:none;margin:0 7px}
+footer a:hover{text-decoration:underline}
+.toast{position:fixed;right:18px;bottom:18px;background:#111827;color:#fff;padding:12px 15px;border-radius:10px;display:none;z-index:100}
+@media(max-width:600px){
+header{padding:30px 13px} header h1{font-size:32px} header p{font-size:16px}
+.tools{grid-template-columns:1fr}.tool{padding:17px}.categories{overflow-x:auto;flex-wrap:nowrap}
+.categories button{white-space:nowrap}.section-title{align-items:flex-start;flex-direction:column;gap:4px}
+}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"ToolBox India","description":"Free online calculators, QR generators, image tools and everyday utilities.","potentialAction":{"@type":"SearchAction","target":"?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+</head>
+<body>
+<header>
+<h1>🧰 ToolBox India</h1>
+<p>Free Online Tools for Everyone</p>
+<div class="search"><input id="search" autocomplete="off" placeholder="🔍 Search calculators, QR tools, image tools..." oninput="searchTools()"></div>
+<div class="search-count" id="searchCount">Showing all tools</div>
+</header>
+
+<div class="container">
+<div class="topbar">
+<div class="stats">
+<div class="stat">⚡ Fast</div><div class="stat">📱 Mobile Friendly</div><div class="stat">🆓 Free</div><div class="stat">🇮🇳 Made for India</div>
+</div>
+<div class="controls">
+<button class="control" onclick="toggleDark()">🌙 Theme</button>
+<button class="control" onclick="toggleFavorites()">⭐ Favorites</button>
+</div>
+</div>
+
+<div class="favorite-panel" id="favoritePanel">
+<strong>⭐ Your Favorites</strong>
+<div class="favorite-list" id="favoriteList"></div>
+</div>
+
+<div class="section-title"><h2>Explore Tools</h2><span id="toolTotal"></span></div>
+<div class="categories">
+<button class="active" onclick="filterTools('all',this)">All</button>
+<button onclick="filterTools('calculator',this)">🧮 Calculators</button>
+<button onclick="filterTools('qr',this)">📱 QR Tools</button>
+<button onclick="filterTools('utility',this)">🛠️ Utility</button>
+<button onclick="filterTools('image',this)">🖼️ Image</button>
+</div>
+
+<div class="tools">
+
+<div class="tool" data-cat="calculator" data-name="percentage calculator" data-title="🧮 Percentage Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🧮 Percentage Calculator</h2><p>Find what percentage one number is of another.</p>
+<input id="p1" type="number" placeholder="Enter number"><input id="p2" type="number" placeholder="Enter total">
+<button class="action" onclick="percentage()">Calculate</button><div class="result" id="pr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="age calculator" data-title="🎂 Age Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🎂 Age Calculator</h2><p>Calculate age in years, months and days.</p>
+<input id="dob" type="date"><button class="action" onclick="age()">Calculate Age</button><div class="result" id="ar"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="emi loan calculator" data-title="💰 EMI Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>💰 EMI Calculator</h2><p>Calculate EMI, total payment, interest and accurate percentages.</p>
+<input id="loan" type="number" min="0" placeholder="Loan amount ₹"><input id="rate" type="number" min="0" step="0.01" placeholder="Annual interest %"><input id="years" type="number" min="0" step="0.1" placeholder="Loan period (years)">
+<button class="action" onclick="emi()">Calculate EMI</button><div class="result" id="er"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="reverse emi loan amount" data-title="🔄 EMI → Loan Amount"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🔄 EMI → Loan Amount</h2><p>Enter EMI, rate and tenure to estimate the loan principal.</p>
+<input id="emiIn" type="number" min="0" placeholder="Monthly EMI ₹"><input id="rate2" type="number" min="0" step="0.01" placeholder="Annual interest %"><input id="years2" type="number" min="0" step="0.1" placeholder="Loan period (years)">
+<button class="action" onclick="reverseEMI()">Find Loan Amount</button><div class="result" id="rer"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="gst calculator" data-title="🧾 GST Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🧾 GST Calculator</h2><p>Add or remove GST from an amount.</p>
+<input id="gstAmount" type="number" min="0" placeholder="Amount ₹"><input id="gstRate" type="number" min="0" placeholder="GST %">
+<select id="gstMode"><option value="add">Add GST</option><option value="remove">Remove GST</option></select>
+<button class="action" onclick="gst()">Calculate</button><div class="result" id="gstr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="discount calculator" data-title="🏷️ Discount Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🏷️ Discount Calculator</h2><p>Calculate discount amount and final price.</p>
+<input id="discPrice" type="number" min="0" placeholder="Original price ₹"><input id="discRate" type="number" min="0" placeholder="Discount %">
+<button class="action" onclick="discount()">Calculate</button><div class="result" id="dr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="profit loss calculator" data-title="📈 Profit & Loss"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📈 Profit & Loss</h2><p>Calculate profit/loss and percentage.</p>
+<input id="cp" type="number" min="0" placeholder="Cost price ₹"><input id="sp" type="number" min="0" placeholder="Selling price ₹">
+<button class="action" onclick="profitLoss()">Calculate</button><div class="result" id="plr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="sip calculator" data-title="📊 SIP Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📊 SIP Calculator</h2><p>Estimate SIP maturity value, invested amount and gain.</p>
+<input id="sip" type="number" min="0" placeholder="Monthly investment ₹"><input id="sipRate" type="number" min="0" step="0.01" placeholder="Expected annual return %"><input id="sipYears" type="number" min="0" placeholder="Years">
+<button class="action" onclick="sipCalc()">Calculate</button><div class="result" id="sr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="salary calculator" data-title="💵 Salary Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>💵 Salary Calculator</h2><p>Estimate monthly take-home from annual CTC and deductions.</p>
+<input id="ctc" type="number" min="0" placeholder="Annual CTC ₹"><input id="deduct" type="number" min="0" placeholder="Annual deductions ₹">
+<button class="action" onclick="salary()">Calculate</button><div class="result" id="salr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="loan eligibility calculator" data-title="🏦 Loan Eligibility"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🏦 Loan Eligibility</h2><p>Estimate loan amount from affordable EMI.</p>
+<input id="eligibleEmi" type="number" min="0" placeholder="Affordable EMI ₹"><input id="eligibleRate" type="number" min="0" step="0.01" placeholder="Interest %"><input id="eligibleYears" type="number" min="0" placeholder="Tenure years">
+<button class="action" onclick="eligibility()">Calculate</button><div class="result" id="elr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="cgpa calculator" data-title="🎓 CGPA Calculator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🎓 CGPA Calculator</h2><p>Calculate average CGPA from entered subject grades.</p>
+<input id="g1" type="number" step="0.01" placeholder="Grade 1"><input id="g2" type="number" step="0.01" placeholder="Grade 2"><input id="g3" type="number" step="0.01" placeholder="Grade 3"><input id="g4" type="number" step="0.01" placeholder="Grade 4">
+<button class="action" onclick="cgpa()">Calculate</button><div class="result" id="cgr"></div></div>
+
+<div class="tool" data-cat="calculator" data-name="date difference calculator" data-title="📅 Date Difference"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📅 Date Difference</h2><p>Find exact number of days between two dates.</p>
+<input id="d1" type="date"><input id="d2" type="date"><button class="action" onclick="dateDiff()">Calculate Days</button><div class="result" id="ddr"></div></div>
+
+<div class="tool" data-cat="utility" data-name="number to words indian number" data-title="🔢 Number to Words"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🔢 Number to Words</h2><p>Convert Indian numbers into English words.</p>
+<input id="numWords" type="number" min="0" placeholder="Example: 125000">
+<button class="action" onclick="numberWords()">Convert</button><div class="result" id="nwr"></div></div>
+
+<div class="tool" data-cat="utility" data-name="password generator strong password" data-title="🔐 Password Generator"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🔐 Password Generator</h2><p>Create a random password using secure browser randomness when available.</p>
+<input id="passLen" type="number" min="6" max="64" value="16" placeholder="Length">
+<button class="action" onclick="passwordGen()">Generate</button><div class="result" id="pwr"></div></div>
+
+<div class="tool" data-cat="utility" data-name="whatsapp link generator" data-title="📱 WhatsApp Link"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📱 WhatsApp Link</h2><p>Create a WhatsApp chat link with an optional message.</p>
+<input id="waPhone" placeholder="Phone with country code, e.g. 919876543210"><textarea id="waMsg" placeholder="Optional message"></textarea>
+<button class="action" onclick="whatsapp()">Create Link</button><div class="result" id="war"></div></div>
+
+<div class="tool" data-cat="qr" data-name="text qr code" data-title="🔤 Text QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🔤 Text QR</h2><p>Generate a QR code for text.</p>
+<textarea id="qrText" placeholder="Enter text"></textarea><button class="action" onclick="qr('qrText','qrr')">Generate QR</button><div class="result" id="qrr"></div></div>
+
+<div class="tool" data-cat="qr" data-name="url qr code website" data-title="🔗 URL QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🔗 URL QR</h2><p>Generate a QR code for a website URL.</p>
+<input id="qrUrl" placeholder="https://example.com"><button class="action" onclick="qr('qrUrl','urlqr')">Generate QR</button><div class="result" id="urlqr"></div></div>
+
+<div class="tool" data-cat="qr" data-name="love letter qr message" data-title="💌 Love Letter QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>💌 Love Letter QR</h2><p>Make a QR that opens a readable message page.</p>
+<input id="loveFrom" placeholder="From"><input id="loveTo" placeholder="To"><textarea id="loveMsg" placeholder="Write your love letter..."></textarea>
+<button class="action" onclick="messageQR('💌 Love Letter','loveFrom','loveTo','loveMsg','loveres','love')">Generate QR</button><div class="result" id="loveres"></div></div>
+
+<div class="tool" data-cat="qr" data-name="birthday qr message" data-title="🎂 Birthday QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🎂 Birthday QR</h2><p>Create a birthday message QR.</p>
+<input id="bFrom" placeholder="From"><input id="bTo" placeholder="Birthday person"><textarea id="bMsg" placeholder="Birthday message"></textarea>
+<button class="action" onclick="messageQR('🎂 Birthday','bFrom','bTo','bMsg','bres','birthday')">Generate QR</button><div class="result" id="bres"></div></div>
+
+<div class="tool" data-cat="qr" data-name="romantic qr message" data-title="💖 Romantic QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>💖 Romantic QR</h2><p>Create a romantic message QR.</p>
+<input id="rFrom" placeholder="From"><input id="rTo" placeholder="To"><textarea id="rMsg" placeholder="Romantic message"></textarea>
+<button class="action" onclick="messageQR('💖 Romantic','rFrom','rTo','rMsg','romres','romantic')">Generate QR</button><div class="result" id="romres"></div></div>
+
+<div class="tool" data-cat="qr" data-name="patra letter qr" data-title="📝 Patra QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📝 Patra QR</h2><p>Create a letter/patra QR.</p>
+<input id="paFrom" placeholder="From"><input id="paTo" placeholder="To"><textarea id="paMsg" placeholder="Write your patra..."></textarea>
+<button class="action" onclick="messageQR('📝 Patra','paFrom','paTo','paMsg','pares','patra')">Generate QR</button><div class="result" id="pares"></div></div>
+
+<div class="tool" data-cat="qr" data-name="phone qr" data-title="📞 Phone QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📞 Phone QR</h2><p>Generate a QR that opens a phone action.</p>
+<input id="phoneQr" placeholder="+91 9876543210"><button class="action" onclick="qr('phoneQr','phoneres','tel:')">Generate QR</button><div class="result" id="phoneres"></div></div>
+
+<div class="tool" data-cat="qr" data-name="email qr" data-title="📧 Email QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📧 Email QR</h2><p>Generate a QR for an email address.</p>
+<input id="emailQr" placeholder="name@example.com"><button class="action" onclick="qr('emailQr','emailres','mailto:')">Generate QR</button><div class="result" id="emailres"></div></div>
+
+<div class="tool" data-cat="qr" data-name="wifi qr" data-title="📶 Wi-Fi QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📶 Wi-Fi QR</h2><p>Generate a Wi-Fi connection QR.</p>
+<input id="wifiName" placeholder="Wi-Fi name"><input id="wifiPass" placeholder="Password"><select id="wifiType"><option>WPA</option><option>WEP</option><option value="">Open / None</option></select>
+<button class="action" onclick="wifiQR()">Generate QR</button><div class="result" id="wifir"></div></div>
+
+<div class="tool" data-cat="qr" data-name="location qr google maps" data-title="📍 Location QR"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📍 Location QR</h2><p>Generate a QR for a Google Maps location.</p>
+<input id="lat" type="number" step="any" placeholder="Latitude"><input id="lng" type="number" step="any" placeholder="Longitude">
+<button class="action" onclick="locationQR()">Generate QR</button><div class="result" id="locres"></div></div>
+
+<div class="tool" data-cat="image" data-name="image compressor jpg jpeg" data-title="🖼️ Image Compressor"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>🖼️ Image Compressor</h2><p>Compress an image in your browser. Files stay on your device.</p>
+<input id="imgFile" type="file" accept="image/*"><label class="small">Quality: <span id="qualityValue">70</span>%</label><input id="imgQuality" type="range" min="10" max="100" value="70" oninput="$('qualityValue').textContent=this.value">
+<button class="action" onclick="compressImage()">Compress</button><div class="result" id="imgr"></div></div>
+
+<div class="tool" data-cat="image" data-name="image to pdf convert" data-title="📄 Image → PDF"><button class="fav" onclick="toggleFav(this)">☆</button>
+<h2>📄 Image → PDF</h2><p>Create a printable PDF from an image using your browser.</p>
+<input id="pdfImage" type="file" accept="image/*"><button class="action" onclick="imagePDF()">Print / Save PDF</button><div class="result" id="pdfr"></div></div>
+
+</div>
+<div class="empty-state" id="emptyState">😕 No tools found. Try another search.</div>
+
+<section class="section">
+<h2>Why use ToolBox India?</h2>
+<p>ToolBox India is designed to keep common calculations and utilities in one simple place. Most tools run directly in your browser, making them convenient on mobile and desktop.</p>
+<p class="small">Calculator results are estimates where real-world rates, taxes, deductions or lender rules can vary. Always verify important financial decisions with the relevant provider.</p>
+</section>
+
+<section class="section">
+<h2>Frequently Asked Questions</h2>
+<p><strong>Are these tools free?</strong><br>Yes. The tools on this page are intended to be free to use.</p>
+<p><strong>Do image tools upload my files?</strong><br>The image compressor and image-to-PDF functions process the selected image in your browser.</p>
+<p><strong>Do QR tools need internet?</strong><br>The QR image service used by this version needs an internet connection to display generated QR images.</p>
+</section>
+</div>
+
+<footer>
+<div>© 2026 ToolBox India | Free Online Tools</div>
+<div style="margin-top:8px;font-size:13px;opacity:.8">Fast • Free • Mobile Friendly • Made for India</div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>Number(n).toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2});
+function out(id,text){$(id).innerHTML=text}
+function validNumber(...v){return v.every(x=>Number.isFinite(x))}
+function showToast(t){$('toast').textContent=t;$('toast').style.display='block';clearTimeout(window.__toast);window.__toast=setTimeout(()=>{$('toast').style.display='none'},2200)}
+
+function percentage(){let a=+$('p1').value,b=+$('p2').value;if(!validNumber(a,b)||b===0){out('pr','Enter valid numbers.');return}out('pr',`${money(a/b*100)}%`)}
+function age(){
+ if(!$('dob').value){out('ar','Select birth date.');return}
+ let b=new Date($('dob').value+'T00:00:00'),t=new Date(); if(b>t){out('ar','Birth date cannot be in the future.');return}
+ let y=t.getFullYear()-b.getFullYear(),m=t.getMonth()-b.getMonth(),d=t.getDate()-b.getDate();
+ if(d<0){m--;d+=new Date(t.getFullYear(),t.getMonth(),0).getDate()}
+ if(m<0){y--;m+=12}
+ out('ar',`${y} years, ${m} months, ${d} days`)
+}
+function calcEMI(P,r,n){let mr=r/12/100;return mr===0?P/n:P*mr*Math.pow(1+mr,n)/(Math.pow(1+mr,n)-1)}
+function emi(){
+ let P=+$('loan').value,r=+$('rate').value,y=+$('years').value,n=Math.round(y*12);
+ if(!validNumber(P,r,y)||P<=0||y<=0||r<0){out('er','Enter valid loan details.');return}
+ let e=calcEMI(P,r,n),total=e*n,interest=total-P,pp=P/total*100;
+ out('er',`Monthly EMI: ₹${money(e)}<br>Total Payment: ₹${money(total)}<br>Total Interest: ₹${money(interest)}<br>Principal Share: ${pp.toFixed(2)}%<br>Interest Share: ${(100-pp).toFixed(2)}%<br>Interest on Principal: ${(interest/P*100).toFixed(2)}%`)
+}
+function reverseEMI(){
+ let e=+$('emiIn').value,r=+$('rate2').value,y=+$('years2').value,n=Math.round(y*12);
+ if(!validNumber(e,r,y)||e<=0||y<=0||r<0){out('rer','Enter valid details.');return}
+ let mr=r/12/100,P=mr===0?e*n:e*(Math.pow(1+mr,n)-1)/(mr*Math.pow(1+mr,n)),total=e*n,interest=total-P,pp=P/total*100;
+ out('rer',`Estimated Loan Amount: ₹${money(P)}<br>Total Payment: ₹${money(total)}<br>Total Interest: ₹${money(interest)}<br>Principal Share: ${pp.toFixed(2)}%<br>Interest Share: ${(100-pp).toFixed(2)}%<br>Interest on Principal: ${(interest/P*100).toFixed(2)}%`)
+}
+function gst(){
+ let a=+$('gstAmount').value,r=+$('gstRate').value;
+ if(!validNumber(a,r)||a<0||r<0||r>100){out('gstr','Enter amount and GST rate from 0% to 100%.');return}
+ if($('gstMode').value==='add'){
+   let g=a*r/100;out('gstr',`GST: ₹${money(g)}<br>Total: ₹${money(a+g)}`)
+ }else{
+   let base=a/(1+r/100);out('gstr',`Original Amount: ₹${money(base)}<br>GST Included: ₹${money(a-base)}`)
+ }
+}
+function discount(){
+ let p=+$('discPrice').value,r=+$('discRate').value;
+ if(!validNumber(p,r)||p<0||r<0||r>100){out('dr','Enter price and discount from 0% to 100%.');return}
+ let d=p*r/100;out('dr',`Discount: ₹${money(d)}<br>Final Price: ₹${money(p-d)}`)
+}
+function profitLoss(){let c=+$('cp').value,s=+$('sp').value;if(!validNumber(c,s)||c<=0||s<0){out('plr','Enter valid prices.');return}let x=s-c;out('plr',x>=0?`Profit: ₹${money(x)}<br>Profit %: ${(x/c*100).toFixed(2)}%`:`Loss: ₹${money(Math.abs(x))}<br>Loss %: ${(Math.abs(x)/c*100).toFixed(2)}%`)}
+function sipCalc(){let p=+$('sip').value,r=+$('sipRate').value,y=+$('sipYears').value,n=Math.round(y*12),m=r/12/100;if(!validNumber(p,r,y)||p<=0||y<=0||r<0){out('sr','Enter valid values.');return}let v=m?p*((Math.pow(1+m,n)-1)/m)*(1+m):p*n;out('sr',`Invested: ₹${money(p*n)}<br>Estimated Value: ₹${money(v)}<br>Estimated Gain: ₹${money(v-p*n)}`)}
+function salary(){let c=+$('ctc').value,d=+$('deduct').value;if(!validNumber(c,d)||c<0||d<0||d>c){out('salr','Enter valid values.');return}out('salr',`Estimated Annual Take-home: ₹${money(c-d)}<br>Estimated Monthly: ₹${money((c-d)/12)}`)}
+function eligibility(){let e=+$('eligibleEmi').value,r=+$('eligibleRate').value,y=+$('eligibleYears').value,n=Math.round(y*12);if(!validNumber(e,r,y)||e<=0||y<=0||r<0){out('elr','Enter valid values.');return}let one=calcEMI(1,r,n);out('elr',`Estimated Loan Amount: ₹${money(e/one)}`)}
+function cgpa(){
+ let raw=['g1','g2','g3','g4'].map(x=>+$(x).value).filter(x=>Number.isFinite(x));
+ if(!raw.length){out('cgr','Enter at least one grade.');return}
+ if(raw.some(x=>x<0||x>10)){out('cgr','Enter grades between 0 and 10.');return}
+ out('cgr',`CGPA: ${(raw.reduce((x,y)=>x+y,0)/raw.length).toFixed(2)}`)
+}
+function dateDiff(){if(!$('d1').value||!$('d2').value){out('ddr','Select both dates.');return}let a=new Date($('d1').value+'T00:00:00'),b=new Date($('d2').value+'T00:00:00'),days=Math.round(Math.abs(b-a)/86400000);out('ddr',`${days} days`)}
+const ones=['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen'],tens=['','','Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety'];
+function under100(n){return n<20?ones[n]:tens[Math.floor(n/10)]+(n%10?' '+ones[n%10]:'')}
+function indianWords(n){if(n===0)return'Zero';let s='';if(n>=10000000){s+=indianWords(Math.floor(n/10000000))+' Crore ';n%=10000000}if(n>=100000){s+=indianWords(Math.floor(n/100000))+' Lakh ';n%=100000}if(n>=1000){s+=indianWords(Math.floor(n/1000))+' Thousand ';n%=1000}if(n>=100){s+=ones[Math.floor(n/100)]+' Hundred ';n%=100}if(n>0)s+=under100(n);return s.trim()}
+function numberWords(){let n=+$('numWords').value;if(!Number.isInteger(n)||n<0||n>9999999999){out('nwr','Enter a whole number up to 9,99,99,99,999.');return}out('nwr',indianWords(n))}
+function passwordGen(){
+ let n=Math.min(64,Math.max(6,+$('passLen').value||16)),chars='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*',p='';
+ if(window.crypto&&crypto.getRandomValues){let a=new Uint32Array(n);crypto.getRandomValues(a);for(let i=0;i<n;i++)p+=chars[a[i]%chars.length]}
+ else for(let i=0;i<n;i++)p+=chars[Math.floor(Math.random()*chars.length)];
+ let safe=p.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ out('pwr',`<span id="generatedPass">${safe}</span><br><button class="action" onclick="copyText(document.getElementById('generatedPass').textContent)">Copy</button>`)
+}
+async function copyText(t){try{await navigator.clipboard.writeText(t);showToast('Copied to clipboard')}catch(e){showToast('Copy is not available in this browser')}} 
+function whatsapp(){let p=$('waPhone').value.replace(/\D/g,''),m=encodeURIComponent($('waMsg').value.trim());if(!p){out('war','Enter phone number with country code.');return}let u=`https://wa.me/${p}${m?'?text='+m:''}`;out('war',`<a href="${u}" target="_blank" rel="noopener">Open WhatsApp Link</a><br><button class="secondary" onclick="copyText('${u.replace(/'/g,"\\'")}')">Copy Link</button>`)}
+function qrImageUrl(v){
+ return `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(v)}`;
+}
+function escapeHTML(v){
+ return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function qr(input,result,prefix=''){
+ let v=$(input).value.trim();
+ if(!v){out(result,'Enter a value.');return}
+ if(prefix===''){
+   if(/^javascript:/i.test(v)){out(result,'That URL type is not allowed.');return}
+ }else if(prefix==='mailto:' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+   out(result,'Enter a valid email address.');return
+ }
+ v=prefix+v;
+ let u=qrImageUrl(v);
+ out(result,`<img src="${u}" alt="Generated QR Code" loading="lazy"><button class="secondary" onclick="downloadQR('${u}')">Download QR</button><br><span class="small">QR image is generated through an online QR service.</span>`);
+}
+function messageQR(title,fromId,toId,msgId,result,theme){
+ let f=$(fromId).value.trim(),t=$(toId).value.trim(),m=$(msgId).value.trim();
+ if(!m){out(result,'Write a message first.');return}
+ if(m.length>700){out(result,'Message is too long for a reliable QR. Please keep it under 700 characters.');return}
+ let themes={love:['💌','#fff1f2','#fce7f3'],birthday:['🎂','#fef3c7','#fce7f3'],romantic:['💖','#fce7f3','#ede9fe'],patra:['📝','#fefce8','#ffedd5']};
+ let th=themes[theme]||['✉️','#eef2ff','#f8fafc'];
+ let base=location.href.split('#')[0];
+ if(/^file:/i.test(base)){
+   out(result,'This message QR works after the website is hosted online. Save this file as index.html and open it through your live website URL.');
+   return
+ }
+ let params=new URLSearchParams({title:title,from:f,to:t,msg:m,theme:theme});
+ let target=base+'#message='+encodeURIComponent(params.toString());
+ let u=qrImageUrl(target);
+ out(result,`<img src="${u}" alt="Message QR Code" loading="lazy"><button class="secondary" onclick="downloadQR('${u}')">Download QR</button><br><span class="small">Scan opens a styled message page from this same ToolBox India file. Keep the message under 700 characters.</span>`);
+}
+function showMessageFromHash(){
+ let raw=location.hash;
+ if(!raw.startsWith('#message='))return;
+ try{
+   let params=new URLSearchParams(decodeURIComponent(raw.slice(9)));
+   let title=escapeHTML(params.get('title')||'Message');
+   let from=escapeHTML(params.get('from')||'');
+   let to=escapeHTML(params.get('to')||'');
+   let msg=escapeHTML(params.get('msg')||'');
+   let theme=params.get('theme')||'love';
+   let themes={love:['💌','#fff1f2','#fce7f3'],birthday:['🎂','#fef3c7','#fce7f3'],romantic:['💖','#fce7f3','#ede9fe'],patra:['📝','#fefce8','#ffedd5']};
+   let th=themes[theme]||themes.love;
+   document.body.innerHTML=`<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;font-family:Arial,sans-serif;background:linear-gradient(135deg,${th[1]},${th[2]})"><main style="width:min(700px,100%);background:#fff;border-radius:24px;padding:30px;box-shadow:0 18px 55px rgba(0,0,0,.12);text-align:center"><div style="font-size:50px">${th[0]}</div><h1 style="font-size:30px;margin:8px 0 18px">${title}</h1><div style="color:#667085;margin-bottom:20px">${from?'From: '+from:''}${from&&to?' • ':''}${to?'To: '+to:''}</div><div style="text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;background:#f8fafc;border-radius:16px;padding:22px;font-size:18px;line-height:1.7">${msg}</div><div style="margin-top:20px;color:#667085;font-size:13px">Created with ToolBox India</div></main></div>`;
+   document.title=title+' – ToolBox India';
+ }catch(e){}
+}
+function wifiQR(){let s=$('wifiName').value.trim(),p=$('wifiPass').value,t=$('wifiType').value;if(!s){out('wifir','Enter Wi-Fi name.');return}let data=`WIFI:T:${t};S:${s};P:${p};;`;let u=qrImageUrl(data);out('wifir',`<img src="${u}" alt="Wi-Fi QR"><button class="secondary" onclick="downloadQR('${u}')">Download QR</button>`)}
+function locationQR(){let a=+$('lat').value,b=+$('lng').value;if(!validNumber(a,b)||a<-90||a>90||b<-180||b>180){out('locres','Enter valid latitude (-90 to 90) and longitude (-180 to 180).');return}let u=`https://www.google.com/maps?q=${a},${b}`,q=qrImageUrl(u);out('locres',`<img src="${q}" alt="Location QR"><button class="secondary" onclick="downloadQR('${q}')">Download QR</button><br><a href="${u}" target="_blank" rel="noopener">Open Location</a>`)}
+function downloadQR(url){let a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';a.click();showToast('QR opened — save it from the image menu')}
+function searchTools(){
+ let q=$('search').value.toLowerCase().trim();
+ document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));
+ document.querySelector('.categories button').classList.add('active');
+ document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('hidden',!!q&&!x.dataset.name.includes(q)));
+ updateToolCount()
+}
+function filterTools(cat,btn){
+ document.querySelectorAll('.categories button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');$('search').value='';
+ document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('hidden',cat!=='all'&&x.dataset.cat!==cat));updateToolCount()
+}
+function updateToolCount(){let all=[...document.querySelectorAll('.tool')],visible=all.filter(x=>!x.classList.contains('hidden')).length;$('searchCount').textContent=visible===all.length?'Showing all tools':`Showing ${visible} tool${visible===1?'':'s'}`;$('toolTotal').textContent=`${all.length} tools available`;$('emptyState').style.display=visible?'none':'block'}
+function toggleDark(){document.body.classList.toggle('dark');localStorage.setItem('tbDark',document.body.classList.contains('dark')?'1':'0')}
+function toggleFavorites(){let p=$('favoritePanel');p.classList.toggle('show');renderFavorites()}
+function getFavs(){try{return JSON.parse(localStorage.getItem('tbFavs')||'[]')}catch(e){return[]}}
+function saveFavs(a){localStorage.setItem('tbFavs',JSON.stringify(a))}
+function toggleFav(btn){
+ let card=btn.closest('.tool'),name=card.dataset.name,a=getFavs(),i=a.indexOf(name);
+ if(i<0){a.push(name);btn.textContent='★';showToast('Added to favorites')}else{a.splice(i,1);btn.textContent='☆';showToast('Removed from favorites')}
+ saveFavs(a);renderFavorites()
+}
+function renderFavorites(){
+ let a=getFavs(),box=$('favoriteList');box.innerHTML='';
+ if(!a.length){box.innerHTML='<span class="small">No favorites yet. Tap ☆ on a tool to save it.</span>';return}
+ a.forEach(name=>{let card=[...document.querySelectorAll('.tool')].find(x=>x.dataset.name===name);if(!card)return;let b=document.createElement('button');b.textContent=card.dataset.title;b.onclick=()=>card.scrollIntoView({behavior:'smooth',block:'center'});box.appendChild(b)})
+}
+function restoreFavs(){let a=getFavs();document.querySelectorAll('.tool').forEach(card=>{if(a.includes(card.dataset.name))card.querySelector('.fav').textContent='★'})}
+function compressImage(){
+ let f=$('imgFile').files[0];if(!f){out('imgr','Choose an image.');return}
+ let q=+$('imgQuality').value/100,reader=new FileReader();
+ reader.onload=e=>{let im=new Image();im.onload=()=>{let c=document.createElement('canvas'),scale=Math.min(1,1600/im.width);c.width=Math.max(1,Math.round(im.width*scale));c.height=Math.max(1,Math.round(im.height*scale));c.getContext('2d').drawImage(im,0,0,c.width,c.height);c.toBlob(b=>{if(!b){out('imgr','Compression failed. Try another image.');return}let u=URL.createObjectURL(b);out('imgr',`Original: ${(f.size/1024).toFixed(1)} KB<br>Compressed: ${(b.size/1024).toFixed(1)} KB<br><a href="${u}" download="compressed-image.jpg">Download Compressed Image</a>`)},'image/jpeg',q)};im.onerror=()=>out('imgr','Could not read this image.');im.src=e.target.result};reader.readAsDataURL(f)
+}
+function imagePDF(){
+ let f=$('pdfImage').files[0];if(!f){out('pdfr','Choose an image.');return}
+ let r=new FileReader();r.onload=e=>{let im=new Image();im.onload=()=>{let c=document.createElement('canvas'),max=1600,s=Math.min(1,max/im.width,max/im.height);c.width=Math.max(1,Math.round(im.width*s));c.height=Math.max(1,Math.round(im.height*s));c.getContext('2d').drawImage(im,0,0,c.width,c.height);let data=c.toDataURL('image/jpeg',.9),w=window.open();if(!w){out('pdfr','Please allow pop-ups for the PDF print window.');return}w.document.write(`<html><head><title>ToolBox India PDF</title></head><body style="margin:0;text-align:center"><img src="${data}" style="max-width:100%;height:auto"><script>window.onload=function(){window.print()}<\/script></body></html>`);w.document.close()};im.onerror=()=>out('pdfr','Could not read this image.');im.src=e.target.result};r.readAsDataURL(f)
+}
+$('search').addEventListener('keydown',e=>{if(e.key==='Escape'){e.target.value='';searchTools()}})
+if(localStorage.getItem('tbDark')==='1')document.body.classList.add('dark');
+restoreFavs();updateToolCount();renderFavorites();
+</script>
+</body>
+</html>
